@@ -3,6 +3,7 @@ public interface StatADT {
     public void setTotal(int t);
     public double getData(int element);
     public int getTotal();
+    public int getArraySize();
     public double getMean();
     public double getSD();
     public double getMax();
