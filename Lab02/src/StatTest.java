@@ -4,38 +4,60 @@ public class StatTest {
     public static void main(String[] args) {
         int total;
         int number = 0;
-        Stat statAdt = new Stat();
+        // Stat statAdt = new Stat();
+        Stat2 statAdt = new Stat2();
 
+        // Stat Test 1
         // while loop true
-        while (true) {
+        // while (true) {
+             
+        //     total = Integer.parseInt(JOptionPane.showInputDialog("Enter number of element : "));
 
-            total = Integer.parseInt(JOptionPane.showInputDialog("Enter number of element : "));
+        //     if (total <= 0 || total > statAdt.number.length) {
+        //         JOptionPane.showMessageDialog(null, "Number cant be less than 0 or greater than 100");
+        //         break;
+        //     }
 
-            if (total <= 0 || total > statAdt.number.length) {
-                JOptionPane.showMessageDialog(null, "Number cant be less than 0 or greater than 100");
-                break;
-            }
+        //     else {
+        //         for (int i = 0; i < total; i++) {
+        //             number = Integer.parseInt(JOptionPane.showInputDialog("Enter number : "));
+        //             statAdt.setData(i, number);
+        //         }
+        //         statAdt.setTotal(total);
+        //         System.out.println();
+        //         System.out.println("Input data are : ");
+        //         for (int j = 0; j < statAdt.getTotal(); j++) {
+        //             System.out.println(statAdt.getData(j));
+        //         }
 
-            else {
-                for (int i = 0; i < total; i++) {
-                    number = Integer.parseInt(JOptionPane.showInputDialog("Enter number : "));
-                    statAdt.setData(i, number);
-                }
-                statAdt.setTotal(total);
-                System.out.println();
-                System.out.println("Input data are : ");
-                for (int j = 0; j < statAdt.getTotal(); j++) {
-                    System.out.println(statAdt.getData(j));
-                }
+        //         System.out.println("\n");
+        //         System.out.format("%-15s %3d number is %6.1f\n", "Mean of these ", statAdt.getTotal(),statAdt.getMean());
+        //         System.out.format("%-15s %3d number is %6.1f\n", "SD of these ", statAdt.getTotal(), statAdt.getSD());
+        //         System.out.format("%-15s %3d number is %6.1f\n", "Max of these ", statAdt.getTotal(), statAdt.getMax());
+        //         System.out.format("%-15s %3d number is %6.1f\n", "Min of these ", statAdt.getTotal(), statAdt.getMin());
 
-                System.out.println("\n");
-                System.out.format("%-15s %3d number is %6.1f\n", "Mean of these ", statAdt.getTotal(),statAdt.getMean());
-                System.out.format("%-15s %3d number is %6.1f\n", "SD of these ", statAdt.getTotal(), statAdt.getSD());
-                System.out.format("%-15s %3d number is %6.1f\n", "Max of these ", statAdt.getTotal(), statAdt.getMax());
-                System.out.format("%-15s %3d number is %6.1f\n", "Min of these ", statAdt.getTotal(), statAdt.getMin());
+        //         break;
+        //     }
+        // }
 
-                break;
-            }
-        }
+         // Stat Test 2
+
+         total = Integer.parseInt(JOptionPane.showInputDialog("Enter number of element : "));
+         for (int i = 0; i < total; i++) {
+             number = Integer.parseInt(JOptionPane.showInputDialog("Enter number : "));
+             statAdt.setData(i, number);
+         }
+         statAdt.setTotal(total);
+         System.out.println();
+         System.out.println("Input data are : ");
+         for (int j = 0; j < statAdt.getTotal(); j++) {
+             System.out.println(statAdt.getData(j));
+         }
+
+         System.out.println("\n");
+         System.out.format("%-15s %3d number is %6.1f\n", "Mean of these ", statAdt.getTotal(),statAdt.getMean());
+         System.out.format("%-15s %3d number is %6.1f\n", "SD of these ", statAdt.getTotal(), statAdt.getSD());
+         System.out.format("%-15s %3d number is %6.1f\n", "Max of these ", statAdt.getTotal(), statAdt.getMax());
+         System.out.format("%-15s %3d number is %6.1f\n", "Min of these ", statAdt.getTotal(), statAdt.getMin());
     }
 }
