@@ -29,10 +29,6 @@ public class Stat implements StatADT {
 
     // Getter and Calculator
 
-    public int getArraySize() {
-        return number.length;
-    }
-
     @Override
     public double getMean() {
         // TODO Auto-generated method stub
