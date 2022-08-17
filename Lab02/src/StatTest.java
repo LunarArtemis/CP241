@@ -11,7 +11,7 @@ public class StatTest {
 
             total = Integer.parseInt(JOptionPane.showInputDialog("Enter number of element : "));
 
-            if (total <= 0 || total > 100) {
+            if (total <= 0 || total > statAdt.getArraySize()) {
                 JOptionPane.showMessageDialog(null, "Number cant be less than 0 or greater than 100");
                 break;
             }

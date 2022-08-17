@@ -1,5 +1,5 @@
 public class Stat implements StatADT {
-    private double[] number = new double[100];
+    protected double[] number = new double[100];
     private int total = 0;
     @Override
 
@@ -28,6 +28,10 @@ public class Stat implements StatADT {
     }
 
     // Getter and Calculator
+
+    public int getArraySize() {
+        return number.length;
+    }
 
     @Override
     public double getMean() {
