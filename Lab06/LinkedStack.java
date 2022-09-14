@@ -3,11 +3,6 @@ public class LinkedStack implements MyStack {
     private MyNode top;
 
     public LinkedStack() {
-        MyStack();
-    }
-
-    @Override
-    public void MyStack() {
         top = null;
     }
 

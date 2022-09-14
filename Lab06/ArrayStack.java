@@ -6,11 +6,6 @@ public class ArrayStack implements MyStack {
 
 
     public ArrayStack() {
-        MyStack();
-    }
-
-    @Override
-    public void MyStack() {
         total = 100;
         s = new Object[total];
         top = -1;
