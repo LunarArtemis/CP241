@@ -8,6 +8,7 @@ public class ArrayQueue implements QueueADT {
         Queue();
     }
 
+    // create a new queue
     @Override
     public void Queue() {   
         front = -1;
@@ -16,6 +17,7 @@ public class ArrayQueue implements QueueADT {
         q = new Object[total];
     }
 
+    // create a new queue with a specified size
     @Override
     public void enqueue(Object e) throws Exception {
         if(isFull()){
@@ -30,6 +32,7 @@ public class ArrayQueue implements QueueADT {
         }
     }
 
+    // remove the first node from the queue
     @Override
     public Object dequeue() throws Exception {
         if (isEmpty()){
@@ -48,6 +51,7 @@ public class ArrayQueue implements QueueADT {
         }
     }
 
+    // return the first node from the queue
     @Override
     public Object front() throws Exception {
         if (isEmpty()) {
