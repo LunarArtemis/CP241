@@ -74,10 +74,11 @@ public class ArrayQueue implements QueueADT {
 
     @Override
     public int length() {
-        if (front == 0) {
-            return rear + 1;
-        } else {
-            return rear - front + 1;
+        if(isEmpty()){
+            return 0;
+        }
+        else{
+            return (total - front + rear + 1) % total;
         }
     }
 }
