@@ -7,8 +7,8 @@ public class QueueTest {
         Student e;
         Object obj;
 
-        //ArrayQueue queue = new ArrayQueue();
-        LinkedQueue queue = new LinkedQueue();
+        ArrayQueue queue = new ArrayQueue();
+        //LinkedQueue queue = new LinkedQueue();
         while (ch != 6) {
             try {
                 choice = JOptionPane.showInputDialog(null,

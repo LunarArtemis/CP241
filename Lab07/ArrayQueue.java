@@ -4,13 +4,13 @@ public class ArrayQueue implements QueueADT {
     private Object q[];
     int front, rear;
 
-    public ArrayQueue(){
+    public ArrayQueue() {
         Queue();
     }
 
     // create a new queue
     @Override
-    public void Queue() {   
+    public void Queue() {
         front = -1;
         rear = -1;
         total = 100;
@@ -20,13 +20,12 @@ public class ArrayQueue implements QueueADT {
     // create a new queue with a specified size
     @Override
     public void enqueue(Object e) throws Exception {
-        if(isFull()){
+        if (isFull()) {
             throw new Exception("Queue is full");
-        }
-        else {
+        } else {
             rear = (rear + 1) % total;
             q[rear] = e;
-            if(front == -1){
+            if (front == -1) {
                 front = 0;
             }
         }
@@ -35,16 +34,13 @@ public class ArrayQueue implements QueueADT {
     // remove the first node from the queue
     @Override
     public Object dequeue() throws Exception {
-        if (isEmpty()){
+        if (isEmpty()) {
             throw new Exception("Queue is empty");
-        }
-        else {
+        } else {
             int removeItem = front;
-            if(front == rear){
-                front = -1;
-                rear = -1;
-            }
-            else {
+            if (front == rear) {
+                front = rear = -1;
+            } else {
                 front = (front + 1) % total;
             }
             return q[removeItem];
@@ -56,7 +52,7 @@ public class ArrayQueue implements QueueADT {
     public Object front() throws Exception {
         if (isEmpty()) {
             throw new Exception("Queue is empty");
-        }else{
+        } else {
             return q[front];
         }
     }
@@ -78,6 +74,10 @@ public class ArrayQueue implements QueueADT {
 
     @Override
     public int length() {
-        return rear + 1;
+        if (front == 0) {
+            return rear + 1;
+        } else {
+            return rear - front + 1;
+        }
     }
 }
