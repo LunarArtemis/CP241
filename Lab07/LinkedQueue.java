@@ -23,6 +23,7 @@ public class LinkedQueue implements QueueADT {
             MyNode node = new MyNode(e);
             if(isEmpty()){
                 head = tail = node;
+                size++;
             }
             else {
                 tail.setNextNode(node);
