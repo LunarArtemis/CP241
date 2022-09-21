@@ -64,7 +64,7 @@ public class CircularArrayQueue implements QueueADT {
 
     @Override
     public boolean isFull() {
-        return rear == total;
+        return front == (rear + 1) % total;
     }
 
     @Override

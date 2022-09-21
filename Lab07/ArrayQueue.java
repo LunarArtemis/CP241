@@ -31,7 +31,7 @@ public class ArrayQueue implements QueueADT {
         if (isEmpty()) {
             throw new Exception("Queue is empty");
         } else {
-            front++;
+            front = front + 1;
             return q[front];
         }
     }
