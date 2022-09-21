@@ -1,27 +1,33 @@
-public class ArrayQueue implements QueueADT {
+public class CircularArrayQueue implements QueueADT {
+
     private int total;
     private Object q[];
     int front, rear;
 
-    public ArrayQueue() {
+    public CircularArrayQueue() {
         Queue();
     }
 
+    // create a new queue
     @Override
     public void Queue() {
         front = -1;
         rear = -1;
-        total = 3;
+        total = 100;
         q = new Object[total];
     }
 
+    // create a new queue with a specified size
     @Override
     public void enqueue(Object e) throws Exception {
         if (isFull()) {
             throw new Exception("Queue is full");
         } else {
-            rear++;
+            rear = (rear + 1) % total;
             q[rear] = e;
+            if (front == -1) {
+                front = 0;
+            }
         }
     }
 
@@ -31,8 +37,13 @@ public class ArrayQueue implements QueueADT {
         if (isEmpty()) {
             throw new Exception("Queue is empty");
         } else {
-            front++;
-            return q[front];
+            int removeItem = front;
+            if (front == rear) {
+                front = rear = -1;
+            } else {
+                front = (front + 1) % total;
+            }
+            return q[removeItem];
         }
     }
 
@@ -63,6 +74,11 @@ public class ArrayQueue implements QueueADT {
 
     @Override
     public int length() {
-        return rear - front;
+        if(isEmpty()){
+            return 0;
+        }
+        else{
+            return (total - front + rear + 1) % total;
+        }
     }
 }

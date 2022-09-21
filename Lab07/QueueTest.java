@@ -8,7 +8,8 @@ public class QueueTest {
         Object obj;
 
         ArrayQueue queue = new ArrayQueue();
-        //LinkedQueue queue = new LinkedQueue();
+        // CircularArrayQueue queue = new CircularArrayQueue();
+        // LinkedQueue queue = new LinkedQueue();
         while (ch != 6) {
             try {
                 choice = JOptionPane.showInputDialog(null,
@@ -62,17 +63,15 @@ public class QueueTest {
 
     public static Student getElement() {
         Student temp;
-        String sID = JOptionPane.showInputDialog(null, "Please enter the student ID");
-        String sName = JOptionPane.showInputDialog(null, "Please enter the student name");
-        double sMid = Double.parseDouble(JOptionPane.showInputDialog(null, "Please enter the student midterm mark"));
-        double sFinal = Double.parseDouble(JOptionPane.showInputDialog(null, "Please enter the student final mark"));
-        double sQuiz = Double.parseDouble(JOptionPane.showInputDialog(null, "Please enter the student quiz mark"));
-        double sProject = Double
-                .parseDouble(JOptionPane.showInputDialog(null, "Please enter the student project mark"));
-        double sCollab = Double
-                .parseDouble(JOptionPane.showInputDialog(null, "Please enter the student collaboration mark"));
+        String idS = JOptionPane.showInputDialog(null, "Please input ID: ");
+        String nameS = JOptionPane.showInputDialog(null, "Please input name: ");
+        double midS = Double.parseDouble(JOptionPane.showInputDialog(null, "Please input Midterm score: "));
+        double finalS = Double.parseDouble(JOptionPane.showInputDialog(null, "Please input Final score: "));
+        double quizS = Double.parseDouble(JOptionPane.showInputDialog(null, "Please input Quiz score: "));
+        double prjS = Double.parseDouble(JOptionPane.showInputDialog(null, "Please input Project score: "));
+        double collabS = Double.parseDouble(JOptionPane.showInputDialog(null, "Please input Collaboration score: "));
         temp = new Student();
-        temp.setStudent(sID, sName, sMid, sFinal, sQuiz, sProject, sCollab);
+        temp.setStudent(idS, nameS, midS, finalS, quizS, prjS, collabS);
         return temp;
     }
 
@@ -88,4 +87,5 @@ public class QueueTest {
                             "\nCollaboration score: " + e.getCollabScore());
         }
     }
+
 }
