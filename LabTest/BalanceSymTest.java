@@ -1,69 +1,50 @@
 import javax.swing.JOptionPane;
 
-public class BalanceSybolsTest {
+public class BalanceSymTest {
     public static void main(String[] args) throws Exception {
 
-        //ArrayStack stack = new ArrayStack();
+        // ArrayStack stack = new ArrayStack();
         LinkedStack stack = new LinkedStack();
 
         String ex = JOptionPane.showInputDialog(null, "What is your expression?");
-        try{
-            for (int i = 0; i < ex.length(); i++) {
-                char c = ex.charAt(i);
-                if(c == '(' || c == '{' || c == '['){
-                    stack.push(c);
-                    continue;
-                }
-                char check;
-                switch(c){
-                    case ')':
-                    if(stack.isEmpty()){
-                        throw new Exception("Stack is empty :Not Balancing Symbol");
-                    }
-                        check = (char)stack.top();
-                        if(check == '('){
-                            stack.pop();
-                        }
-                        else if(check == '{' || check == '['){
-                            throw new Exception("Symbol does not match at position "+(i+1)+": Not Balancing Symbol");
-                        }
-                        break;
+        
+        // replace all spaces with empty string
+        ex = ex.replaceAll("\\s", "");
 
-                    case '}':
-                    if(stack.isEmpty()){
-                        throw new Exception("Stack is empty :Not Balancing Symbol");
-                    }
-                        check = (char)stack.pop();
-                        if(check == '{'){
-                            stack.pop();
-                        }
-                        else if(check == '(' || check == '['){
-                            throw new Exception("Symbol does not match at position "+(i+1)+": Not Balancing Symbol");
-                        }
-                        break;
+        boolean balanced = true;
+        int index = 0;
+        String symbol;
 
-                    case ']':
-                    if(stack.isEmpty()){
-                        throw new Exception("Stack is empty :Not Balancing Symbol");
-                    }
-                        check = (char)stack.pop();
-                        if(check == '['){
-                            stack.pop();
+        try {
+            while (balanced && index < ex.length()) {
+                symbol = ex.substring(index, index + 1);
+                if (symbol.equals("(") || symbol.equals("[") || symbol.equals("{")) {
+                    stack.push(symbol);
+                } else if (symbol.equals(")") || symbol.equals("]") || symbol.equals("}")) {
+                    if (stack.isEmpty()) {
+                        balanced = false;
+                    } else {
+                        String top = (String) stack.pop();
+                        if (symbol.equals(")") && !top.equals("(") || symbol.equals("]") && !top.equals("[") || symbol.equals("}") && !top.equals("{")) {
+                            balanced = false;
                         }
-                        else if(check == '(' || check == '{'){
-                            throw new Exception("Symbol does not match at position "+(i+1)+": Not Balancing Symbol");
-                        }
-                        break;
                     }
                 }
-            if(stack.isEmpty()){
-                throw new Exception("Balancing Symbol");
+                index++;
             }
-            else{
-                throw new Exception("Illegal Expression : Not Balancing Symbol");
+            if (balanced && stack.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "The expression is balanced");
+            } else if (balanced && stack.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Stack is empty :Not Balancing Symbol");
+            }
+            else if (balanced && !stack.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Illegal Expression : Not Balancing Symbol");
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "The expression is not balanced at position " + index);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
+            JOptionPane.showMessageDialog(null, "The expression is not balanced");
         }
     }
 }
