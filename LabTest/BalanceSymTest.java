@@ -1,31 +1,30 @@
 import javax.swing.JOptionPane;
 
 public class BalanceSymTest {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception{
 
         // ArrayStack stack = new ArrayStack();
         LinkedStack stack = new LinkedStack();
 
         String ex = JOptionPane.showInputDialog(null, "What is your expression?");
         
-        // replace all spaces with empty string
         ex = ex.replaceAll("\\s", "");
 
         boolean balanced = true;
         int index = 0;
-        String symbol;
+        char symbol;
 
         try {
             while (balanced && index < ex.length()) {
-                symbol = ex.substring(index, index + 1);
-                if (symbol.equals("(") || symbol.equals("[") || symbol.equals("{")) {
+                symbol = ex.charAt(index);
+                if (symbol == '(' || symbol == '[' || symbol == '{') {
                     stack.push(symbol);
-                } else if (symbol.equals(")") || symbol.equals("]") || symbol.equals("}")) {
+                } else if (symbol == ')' || symbol == ']' || symbol == '}') {
                     if (stack.isEmpty()) {
                         balanced = false;
                     } else {
-                        String top = (String) stack.pop();
-                        if (symbol.equals(")") && !top.equals("(") || symbol.equals("]") && !top.equals("[") || symbol.equals("}") && !top.equals("{")) {
+                        char top = (char) stack.pop();
+                        if (symbol == ')' && top != '(' || symbol == ']' && top != '[' || symbol == '}' && top != '{') {
                             balanced = false;
                         }
                     }
@@ -44,7 +43,7 @@ public class BalanceSymTest {
                 JOptionPane.showMessageDialog(null, "The expression is not balanced at position " + index);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "The expression is not balanced");
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
 }
