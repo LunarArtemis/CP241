@@ -1,3 +1,4 @@
+
 import javax.swing.JOptionPane;
 
 public class BalanceSymTest {
@@ -6,12 +7,12 @@ public class BalanceSymTest {
         // ArrayStack stack = new ArrayStack();
         LinkedStack stack = new LinkedStack();
 
-        boolean balanced  = true;
-        int index  =0;
+        boolean balanced = true;
+        int index = 0;
         char symbol;
 
         try {
-            String ex = JOptionPane.showInputDialog(null, "Enter");
+            String ex = JOptionPane.showInputDialog(null, "E    ");
             ex = ex.replace(" ", "");
 
             while (balanced && index < ex.length()) {
@@ -21,27 +22,24 @@ public class BalanceSymTest {
                 } else if (symbol == ')' || symbol == '}' || symbol == ']') {
                     if (stack.isEmpty()) {
                         balanced = false;
-                        throw new Exception("Stack is empty :Not Balancing Symbol");
+                        throw new Exception("Not balance : Stack not empty");
                     } else {
                         char top = (char) stack.pop();
                         if (symbol == ')' && top != '(' || symbol == '}' && top != '{' || symbol == ']' && top != '[') {
                             balanced = false;
-                            throw new Exception( "The expression is not balanced at position " + (index + 1));
+                            throw new Exception("Not balance at index : " + (index + 1));
                         }
                     }
                 }
                 index++;
             }
-
-
             if (balanced && stack.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "The expression is balanced");
-            } else if (balanced && !stack.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Illegal Expression : Not Balancing Symbol");
+                JOptionPane.showMessageDialog(null, "Balance");
+            } else {
+                JOptionPane.showMessageDialog(null, "Illegal not balance");
             }
-
-        }catch(Exception e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
 }
