@@ -22,7 +22,7 @@ public class BalanceSymTest {
                 } else if (symbol == ')' || symbol == '}' || symbol == ']') {
                     if (stack.isEmpty()) {
                         balanced = false;
-                        throw new Exception("Not balance : Stack not empty");
+                        throw new Exception("Not balance : Stack empty");
                     } else {
                         char top = (char) stack.pop();
                         if (symbol == ')' && top != '(' || symbol == '}' && top != '{' || symbol == ']' && top != '[') {
